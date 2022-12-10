@@ -48,8 +48,7 @@ export default {
           this.updateStudents(); // to prevent needing manual reload to see data
         })
         .catch((err) => {
-          let msg = err.response.data.join(",");
-          alert("Error adding student\n" + msg);
+          alert("Error adding student. starID must be unique");
         });
     },
     studentArrivedOrLeft(student, present) {
@@ -60,7 +59,7 @@ export default {
           this.mostRecentStudent = student;
           this.updateStudents();
         })
-        .catch(() => alert("Unable to update students"));
+        .catch(() => alert("Unable to update students")); // Incase of any errors updating
     },
     deleteStudent(student) {
       this.$student_api
